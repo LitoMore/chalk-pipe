@@ -3,7 +3,8 @@
 const test = require('ava');
 const chalk = require('chalk');
 
-const {modifiers, normalColors} = require('./styles');
+const modifiers = require('./styles').modifiers;
+const normalColors = require('./styles').normalColors;
 const chalkPipe = require('.');
 
 test('Modifiers', t => {

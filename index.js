@@ -3,7 +3,8 @@
 const chalk = require('chalk');
 const cssColorNames = require('css-color-names');
 
-const {modifiers, normalColors} = require('./styles');
+const modifiers = require('./styles').modifiers;
+const normalColors = require('./styles').normalColors;
 
 function isBackground(style) {
 	return Boolean(style.match(/^bg.+$/));
