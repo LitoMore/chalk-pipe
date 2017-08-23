@@ -5,7 +5,7 @@
 [![](https://img.shields.io/npm/l/chalk-pipe.svg)](https://github.com/LitoMore/chalk-pipe/blob/master/LICENSE)
 [![](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
-Apply color scheme in a style pipe
+Create chalk scheme with a style pipe
 
 ![](https://raw.githubusercontent.com/LitoMore/chalk-pipe/master/screenshot.png)
 
@@ -23,7 +23,7 @@ const chalkPipe = require('chalk-pipe');
 console.log(chalkPipe('blue.bold')('Hello world!'));
 ```
 
-Use dot `.` to separeate multiple styles.
+Use dot `.` to separeate multiple styles:
 
 ```javascript
 const link = chalkPipe('blue.underline');
@@ -35,7 +35,7 @@ console.log(error('Error!'));
 console.log(warning('Warning!'));
 ```
 
-`chalkPipe` is also `chalk`
+`chalkPipe` is also `chalk`:
 
 ```javascript
 const blue = chalkPipe('blue');
