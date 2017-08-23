@@ -1,5 +1,10 @@
 # chalk-pipe
 
+[![](https://img.shields.io/travis/LitoMore/chalk-pipe/master.svg)](https://travis-ci.org/LitoMore/chalk-pipe)
+[![](https://img.shields.io/npm/v/chalk-pipe.svg)](https://www.npmjs.com/package/chalk-pipe)
+[![](https://img.shields.io/npm/l/chalk-pipe.svg)](https://github.com/LitoMore/chalk-pipe/blob/master/LICENSE)
+[![](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+
 Apply color scheme in a style pipe
 
 ![](https://raw.githubusercontent.com/LitoMore/chalk-pipe/master/screenshot.png)
