@@ -54,6 +54,7 @@ console.log(link('Link!'));
 
 ## Related
 
+- [chalk-pipe-cli](https://github.com/LitoMore/chalk-pipe-cli) - CLI for this module
 - [inquirer-chalk-pipe](https://github.com/LitoMore/inquirer-chalk-pipe) - chalk-pipe style input for inquirer.js
 - [chalk](https://github.com/chalk/chalk) - Output colored text to terminal
 
