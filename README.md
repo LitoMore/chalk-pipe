@@ -5,7 +5,7 @@
 [![](https://img.shields.io/npm/l/chalk-pipe.svg)](https://github.com/LitoMore/chalk-pipe/blob/master/LICENSE)
 [![](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
-Create chalk scheme with a style pipe
+Create chalk style schemes with simpler style strings
 
 ![](https://raw.githubusercontent.com/LitoMore/chalk-pipe/master/screenshot.png)
 
