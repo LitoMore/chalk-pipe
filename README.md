@@ -88,7 +88,7 @@ chalkPipe('underline', chalk.blue)('Link!');
 ## Related
 
 - [chalk-pipe-cli](https://github.com/LitoMore/chalk-pipe-cli) - CLI for this module
-- [inquirer-chalk-pipe](https://github.com/LitoMore/inquirer-chalk-pipe) - chalk-pipe style input for inquirer.js
+- [inquirer-chalk-pipe](https://github.com/LitoMore/inquirer-chalk-pipe) - A inquirer plugin for input chalk-pipe style strings
 - [chalk](https://github.com/chalk/chalk) - Output colored text to terminal
 
 ## License
