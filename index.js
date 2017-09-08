@@ -26,8 +26,8 @@ function isKeyword(style) {
 	return Boolean(cssColorNames[style]);
 }
 
-module.exports = function (stylePipe) {
-	let paint = chalk;
+module.exports = function (stylePipe, customChalk) {
+	let paint = customChalk || chalk;
 
 	if (!stylePipe || stylePipe.length === 0) {
 		return paint;

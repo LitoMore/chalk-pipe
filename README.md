@@ -44,6 +44,39 @@ const link = blue.underline;
 console.log(link('Link!'));
 ```
 
+### Use custom chalk
+
+```javascript
+const chalk = require('chalk');
+const chalkPipe = require('chalk-pipe');
+
+const text =  chalkPipe('underline', chalk.blue)('Link!');
+
+console.log(text);
+```
+
+## API
+
+### chalkPipe(styles)(text)
+
+Example:
+
+ ```javascript
+ chalkPipe('blue.underline')('Link!');
+ ```
+
+### chalkPipe(styles, chalk)(text)
+
+Example:
+
+```javascript
+const chalk = require('chalk');
+
+chalk.enable = true;
+
+chalkPipe('underline', chalk.blue)('Link!');
+```
+
 ## Valid styles
 
 - [Modifiers](https://github.com/chalk/chalk#modifiers)
