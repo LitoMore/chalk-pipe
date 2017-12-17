@@ -7,8 +7,10 @@ const modifiers = require('./styles').modifiers;
 const normalColors = require('./styles').normalColors;
 const chalkPipe = require('.');
 
+chalk.enabled = true;
+
 test('Modifiers', t => {
-	const scheme = chalkPipe(modifiers.join('.'));
+	const scheme = chalkPipe(modifiers.join('.'), chalk);
 	const text = scheme('foo');
 	const should = chalk
 		.reset
@@ -24,7 +26,7 @@ test('Modifiers', t => {
 });
 
 test('Normal Colors', t => {
-	const scheme = chalkPipe(normalColors.join('.'));
+	const scheme = chalkPipe(normalColors.join('.'), chalk);
 	const text = scheme('bar');
 	const should = chalk
 		.black
@@ -48,7 +50,7 @@ test('Normal Colors', t => {
 });
 
 test('Background styles', t => {
-	const scheme = chalkPipe('bgRed.bg#ff99cc.bgPink.bgBlackBright');
+	const scheme = chalkPipe('bgRed.bg#ff99cc.bgPink.bgBlackBright', chalk);
 	const text = scheme('unicorn');
 	const should = chalk
 		.bgRed
