@@ -21,7 +21,7 @@
     "xo": "^0.18.2"
   },
   "dependencies": {
-    "chalk": "^2.1.0",
+    "chalk": "^2.3.0",
     "css-color-names": "0.0.4"
   }
 }
