@@ -3,8 +3,7 @@
 const test = require('ava');
 const chalk = require('chalk');
 
-const modifiers = require('./styles').modifiers;
-const normalColors = require('./styles').normalColors;
+const {modifiers, normalColors} = require('./styles');
 const chalkPipe = require('.');
 
 chalk.enabled = true;

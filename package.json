@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/LitoMore/chalk-pipe#readme",
   "devDependencies": {
-    "ava": "^0.22.0",
-    "xo": "^0.18.2"
+    "ava": "^1.0.0-beta.8",
+    "xo": "^0.23.0"
   },
   "dependencies": {
     "chalk": "^2.4.1",
