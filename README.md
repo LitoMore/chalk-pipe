@@ -89,6 +89,7 @@ chalkPipe('underline', chalk.blue)('Link!');
 ## Related
 
 - [chalk-pipe-cli](https://github.com/LitoMore/chalk-pipe-cli) - CLI for this module
+- [ink-color-pipe](https://github.com/LitoMore/ink-color-pipe) - Ink component for this module
 - [inquirer-chalk-pipe](https://github.com/LitoMore/inquirer-chalk-pipe) - A inquirer plugin for input chalk-pipe style strings
 - [chalk](https://github.com/chalk/chalk) - Output colored text to terminal
 
