@@ -34,8 +34,7 @@ module.exports = function (stylePipe, customChalk) {
 
 	const styles = stylePipe.split('.');
 
-	for (let i = 0; i < styles.length; i++) {
-		let style = styles[i];
+	for (let style of styles) {
 		let isBg = false;
 
 		// Modifier
@@ -46,7 +45,7 @@ module.exports = function (stylePipe, customChalk) {
 
 		// Background
 		if (isBackground(style)) {
-			style = style.substr(2).replace('BlackBright', 'Gray');
+			style = style.slice(2).replace('BlackBright', 'Gray');
 			style = style[0].toLowerCase() + style.slice(1);
 			isBg = true;
 		}
@@ -58,6 +57,7 @@ module.exports = function (stylePipe, customChalk) {
 			} else {
 				paint = paint.hex(style);
 			}
+
 			continue;
 		}
 
@@ -69,6 +69,7 @@ module.exports = function (stylePipe, customChalk) {
 			} else {
 				paint = paint[style];
 			}
+
 			continue;
 		} else if (isKeyword(style)) {
 			if (isBg) {
@@ -76,6 +77,7 @@ module.exports = function (stylePipe, customChalk) {
 			} else {
 				paint = paint.keyword(style);
 			}
+
 			continue;
 		}
 	}
