@@ -1,6 +1,6 @@
 {
   "name": "chalk-pipe",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Apply a color scheme in a style pipe",
   "main": "index.js",
   "scripts": {
