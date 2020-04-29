@@ -18,7 +18,7 @@ function isModifier(style) {
 }
 
 function isHexColor(style) {
-	return Boolean(style.match(/^#[0-9A-Fa-f]{6}$/));
+	return Boolean(style.match(/^#[\dA-Fa-f]{6}$/));
 }
 
 function isKeyword(style) {

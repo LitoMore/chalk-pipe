@@ -17,13 +17,13 @@
   },
   "homepage": "https://github.com/LitoMore/chalk-pipe#readme",
   "devDependencies": {
-    "ava": "^1.0.1",
-    "coveralls": "^3.0.2",
-    "nyc": "^13.1.0",
-    "xo": "^0.25.3"
+    "ava": "^3.8.1",
+    "coveralls": "^3.1.0",
+    "nyc": "^15.0.1",
+    "xo": "^0.30.0"
   },
   "dependencies": {
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "css-color-names": "^1.0.0"
   }
 }
