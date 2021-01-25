@@ -19,7 +19,7 @@ $ npm install chalk-pipe
 ## Usage
 
 ```javascript
-const chalkPipe = require('chalk-pipe');
+import chalkPipe from 'chalk-pipe';
 
 console.log(chalkPipe('blue.bold')('Hello world!'));
 ```
@@ -48,8 +48,8 @@ console.log(link('Link!'));
 ### Use custom chalk
 
 ```javascript
-const chalk = require('chalk');
-const chalkPipe = require('chalk-pipe');
+import chalk from 'chalk';
+import chalkPipe from 'chalk-pipe';
 
 const text =  chalkPipe('underline', chalk.blue)('Link!');
 
@@ -71,7 +71,7 @@ Example:
 Example:
 
 ```javascript
-const chalk = require('chalk');
+import chalk from 'chalk';
 
 chalk.enable = true;
 
