@@ -1,31 +1,27 @@
-'use strict';
+import chalk from 'chalk';
+import {modifiers, normalColors, cssColorNames} from './styles.js';
 
-const chalk = require('chalk');
-const cssColorNames = require('css-color-names');
-
-const {modifiers, normalColors} = require('./styles');
-
-function isBackground(style) {
+const isBackground = style => {
 	return Boolean(style.match(/^bg.+$/));
-}
+};
 
-function isNormalColor(style) {
+const isNormalColor = style => {
 	return Boolean(style.match(`^(${normalColors.join('|')})$`));
-}
+};
 
-function isModifier(style) {
+const isModifier = style => {
 	return Boolean(style.match(`^(${modifiers.join('|')})$`));
-}
+};
 
-function isHexColor(style) {
+const isHexColor = style => {
 	return Boolean(style.match(/^#[\dA-Fa-f]{6}$/));
-}
+};
 
-function isKeyword(style) {
+const isKeyword = style => {
 	return Boolean(cssColorNames[style]);
-}
+};
 
-module.exports = function (stylePipe, customChalk) {
+const chalkPipe = (stylePipe, customChalk) => {
 	let paint = customChalk || chalk;
 
 	if (!stylePipe || stylePipe.length === 0) {
@@ -52,11 +48,7 @@ module.exports = function (stylePipe, customChalk) {
 
 		// Hex
 		if (isHexColor(style)) {
-			if (isBg) {
-				paint = paint.bgHex(style);
-			} else {
-				paint = paint.hex(style);
-			}
+			paint = isBg ? paint.bgHex(style) : paint.hex(style);
 
 			continue;
 		}
@@ -72,11 +64,7 @@ module.exports = function (stylePipe, customChalk) {
 
 			continue;
 		} else if (isKeyword(style)) {
-			if (isBg) {
-				paint = paint.bgKeyword(style);
-			} else {
-				paint = paint.keyword(style);
-			}
+			paint = isBg ? paint.bgKeyword(style) : paint.keyword(style);
 
 			continue;
 		}
@@ -84,3 +72,5 @@ module.exports = function (stylePipe, customChalk) {
 
 	return paint;
 };
+
+export default chalkPipe;

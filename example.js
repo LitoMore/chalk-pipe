@@ -1,7 +1,5 @@
-'use strict';
-
-const chalk = require('chalk');
-const chalkPipe = require('.');
+import chalk from 'chalk';
+import chalkPipe from './index.js';
 
 const fakeChalk = new chalk.constructor({enabled: false});
 

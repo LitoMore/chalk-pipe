@@ -1,11 +1,7 @@
-'use strict';
-
-const test = require('ava');
-const chalk = require('chalk');
-const cssColorNames = require('css-color-names');
-
-const {modifiers, normalColors} = require('./styles');
-const chalkPipe = require('.');
+import test from 'ava';
+import chalk from 'chalk';
+import {modifiers, normalColors, cssColorNames} from './styles.js';
+import chalkPipe from './index.js';
 
 chalk.enabled = true;
 
