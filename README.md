@@ -1,5 +1,6 @@
 # chalk-pipe
 
+[![](https://github.com/LitoMore/chalk-pipe/workflows/Node/badge.svg)](https://github.com/LitoMore/chalk-pipe/actions)
 [![](https://img.shields.io/npm/v/chalk-pipe.svg)](https://www.npmjs.com/package/chalk-pipe)
 [![](https://img.shields.io/npm/l/chalk-pipe.svg)](https://github.com/LitoMore/chalk-pipe/blob/master/LICENSE)
 [![](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
