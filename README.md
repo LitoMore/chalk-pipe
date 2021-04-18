@@ -1,7 +1,6 @@
 # chalk-pipe
 
-[![](https://img.shields.io/travis/LitoMore/chalk-pipe/master.svg)](https://travis-ci.org/LitoMore/chalk-pipe)
-[![](https://coveralls.io/repos/github/LitoMore/chalk-pipe/badge.svg?branch=master)](https://coveralls.io/github/LitoMore/chalk-pipe?branch=master)
+[![](https://github.com/LitoMore/chalk-pipe/workflows/Node/badge.svg)](https://github.com/LitoMore/chalk-pipe/actions)
 [![](https://img.shields.io/npm/v/chalk-pipe.svg)](https://www.npmjs.com/package/chalk-pipe)
 [![](https://img.shields.io/npm/l/chalk-pipe.svg)](https://github.com/LitoMore/chalk-pipe/blob/master/LICENSE)
 [![](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
