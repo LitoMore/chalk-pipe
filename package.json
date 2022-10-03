@@ -1,6 +1,6 @@
 {
   "name": "chalk-pipe",
-  "version": "5.1.1",
+  "version": "5.1.2",
   "description": "Create chalk style schemes with simpler style strings",
   "type": "module",
   "exports": "./dist/index.js",
