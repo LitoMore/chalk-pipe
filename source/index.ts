@@ -2,19 +2,19 @@ import chalk, {Chalk, Modifiers, ForegroundColor} from 'chalk';
 import {modifiers, normalColors, cssColorNames} from './styles.js';
 
 const isBackground = (style: string) => {
-	return Boolean(/^bg.+$/.test(style));
+	return style.startsWith('bg');
 };
 
 const isNormalColor = (style: string) => {
-	return Boolean(new RegExp(`^(${normalColors.join('|')})$`).test(style));
+	return normalColors.includes(style);
 };
 
 const isModifier = (style: string) => {
-	return Boolean(new RegExp(`^(${modifiers.join('|')})$`).test(style));
+	return modifiers.includes(style);
 };
 
 const isHexColor = (style: string) => {
-	return Boolean(/^#[\dA-Fa-f]{6}$/.test(style));
+	return /^#[\da-f]{6}$/i.test(style);
 };
 
 const isKeyword = (style: string) => {

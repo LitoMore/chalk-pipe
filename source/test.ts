@@ -8,9 +8,8 @@ chalk.level = 1;
 test('Modifiers', (t) => {
 	const scheme = chalkPipe(modifiers.join('.'), chalk);
 	const text = scheme('foo');
-	const should = chalk.reset.bold.dim.italic.underline.inverse.hidden.strikethrough(
-		'foo'
-	);
+	const should =
+		chalk.reset.bold.dim.italic.underline.inverse.hidden.strikethrough('foo');
 
 	t.is(text, should);
 });
@@ -18,9 +17,10 @@ test('Modifiers', (t) => {
 test('Normal Colors', (t) => {
 	const scheme = chalkPipe(normalColors.join('.'), chalk);
 	const text = scheme('bar');
-	const should = chalk.black.red.green.yellow.blue.magenta.cyan.white.gray.redBright.greenBright.yellowBright.blueBright.magentaBright.cyanBright.whiteBright(
-		'bar'
-	);
+	const should =
+		chalk.black.red.green.yellow.blue.magenta.cyan.white.gray.redBright.greenBright.yellowBright.blueBright.magentaBright.cyanBright.whiteBright(
+			'bar'
+		);
 
 	t.is(text, should);
 });
