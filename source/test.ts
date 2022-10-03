@@ -19,7 +19,7 @@ test('Normal Colors', (t) => {
 	const text = scheme('bar');
 	const should =
 		chalk.black.red.green.yellow.blue.magenta.cyan.white.gray.redBright.greenBright.yellowBright.blueBright.magentaBright.cyanBright.whiteBright(
-			'bar'
+			'bar',
 		);
 
 	t.is(text, should);

@@ -1,4 +1,5 @@
-import chalk, {Chalk, Modifiers, ForegroundColor} from 'chalk';
+import type {Chalk, Modifiers, ForegroundColor} from 'chalk';
+import chalk from 'chalk';
 import {modifiers, normalColors, cssColorNames} from './styles.js';
 
 const isBackground = (style: string) => {
@@ -18,12 +19,12 @@ const isHexColor = (style: string) => {
 };
 
 const isKeyword = (style: string) => {
-	// @ts-expect-error
-	return Boolean(cssColorNames[style]);
+	return style in cssColorNames;
 };
 
 const chalkPipe = (stylePipe?: string, customChalk?: Chalk) => {
-	let paint = customChalk ?? chalk;
+	// eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+	let paint = customChalk || chalk;
 
 	if (!stylePipe || stylePipe.length === 0) {
 		return paint;

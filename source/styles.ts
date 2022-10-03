@@ -6,7 +6,7 @@ export const modifiers = [
 	'underline',
 	'inverse',
 	'hidden',
-	'strikethrough'
+	'strikethrough',
 ];
 
 export const normalColors = [
@@ -25,7 +25,7 @@ export const normalColors = [
 	'blueBright',
 	'magentaBright',
 	'cyanBright',
-	'whiteBright'
+	'whiteBright',
 ];
 
 export const cssColorNames = {
@@ -176,5 +176,5 @@ export const cssColorNames = {
 	white: '#ffffff',
 	whitesmoke: '#f5f5f5',
 	yellow: '#ffff00',
-	yellowgreen: '#9acd32'
-};
+	yellowgreen: '#9acd32',
+} as const;

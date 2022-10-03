@@ -12,9 +12,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
-    "pretest": "del-cli dist && npm run build",
-    "test": "xo && ava"
+    "build": "del-cli dist && tsc",
+    "test": "xo && c8 ava"
   },
   "repository": {
     "type": "git",
@@ -27,13 +26,14 @@
   },
   "homepage": "https://github.com/LitoMore/chalk-pipe#readme",
   "devDependencies": {
-    "@ava/typescript": "^1.1.1",
-    "@sindresorhus/tsconfig": "^1.0.2",
-    "ava": "^3.15.0",
+    "@sindresorhus/tsconfig": "^3.0.1",
+    "@types/node": "^18.8.0",
+    "ava": "^4.3.3",
+    "c8": "^7.12.0",
     "del-cli": "^3.0.1",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.4",
-    "xo": "^0.38.2"
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4",
+    "xo": "^0.52.3"
   },
   "dependencies": {
     "chalk": "^4.1.0"
