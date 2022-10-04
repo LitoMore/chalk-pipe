@@ -107,7 +107,7 @@ test('Unknown style', (t) => {
 });
 
 test('Built-in Chalk', (t) => {
-	const scheme = chalkPipe('cyan');
+	const scheme = chalkPipe('cyan', chalk);
 	const text = scheme('normal text');
 	const expected = chalk.cyan('normal text');
 	t.is(text, expected);
