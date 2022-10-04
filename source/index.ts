@@ -3,19 +3,19 @@ import chalk from 'chalk';
 import type {Keyword} from './styles.js';
 import {modifiers, colors, cssKeywords} from './styles.js';
 
-const isBuiltInStyle = (style: string) => {
+export const isBuiltInStyle = (style: string) => {
 	return ([...modifiers, ...colors] as string[]).includes(style);
 };
 
-const isBackground = (style: string) => {
+export const isBackground = (style: string) => {
 	return style.startsWith('bg');
 };
 
-const isHexColor = (style: string) => {
+export const isHexColor = (style: string) => {
 	return /^#[\da-f]{3,6}$/i.test(style);
 };
 
-const isKeyword = (style: string) => {
+export const isKeyword = (style: string) => {
 	return style in cssKeywords;
 };
 
@@ -63,12 +63,8 @@ const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
 	return paint;
 };
 
-export {
-	type Modifiers,
-	type ForegroundColor,
-	type BackgroundColor,
-	type Color,
-} from 'chalk';
+export {default as chalk} from 'chalk';
+export * from 'chalk';
 
 export {
 	type Keyword,
