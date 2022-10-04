@@ -92,9 +92,13 @@ const chalk = new Chalk({level: 1});
 chalkPipe('underline', chalk.blue)('Link!');
 ```
 
+## Advanced usage
+
+The following are the functions and variables used by the logic of `chalk-pipe`. We exposed them all for convenience.
+
 ### modifiers, foregroundColors, backgroundColors, colors, and keywords
 
-All supported style strings are exposed as an array of strings for convenience. `colors` is the combination of `foregroundColors` and `backgroundColors`.
+All supported style strings are exposed as an array of strings. `colors` is the combination of `foregroundColors` and `backgroundColors`.
 
 This can be useful if you wrap Chalk and need to validate input:
 
