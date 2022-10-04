@@ -1,28 +1,25 @@
-import type {Chalk, Modifiers, ForegroundColor} from 'chalk';
+import type {ChalkInstance, Modifiers, Color} from 'chalk';
 import chalk from 'chalk';
-import {modifiers, normalColors, cssColorNames} from './styles.js';
+import type {Keyword} from './styles.js';
+import {modifiers, colors, cssKeywords} from './styles.js';
+
+const isBuiltInStyle = (style: string) => {
+	return ([...modifiers, ...colors] as string[]).includes(style);
+};
 
 const isBackground = (style: string) => {
 	return style.startsWith('bg');
 };
 
-const isNormalColor = (style: string) => {
-	return normalColors.includes(style);
-};
-
-const isModifier = (style: string) => {
-	return modifiers.includes(style);
-};
-
 const isHexColor = (style: string) => {
-	return /^#[\da-f]{6}$/i.test(style);
+	return /^#[\da-f]{3,6}$/i.test(style);
 };
 
 const isKeyword = (style: string) => {
-	return style in cssColorNames;
+	return style in cssKeywords;
 };
 
-const chalkPipe = (stylePipe?: string, customChalk?: Chalk) => {
+const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
 	// eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
 	let paint = customChalk || chalk;
 
@@ -35,15 +32,15 @@ const chalkPipe = (stylePipe?: string, customChalk?: Chalk) => {
 	for (let style of styles) {
 		let isBg = false;
 
-		// Modifier
-		if (isModifier(style)) {
-			paint = paint[style as typeof Modifiers];
+		// Built-in styles
+		if (isBuiltInStyle(style)) {
+			paint = paint[style as Modifiers | Color];
 			continue;
 		}
 
 		// Background
 		if (isBackground(style)) {
-			style = style.slice(2).replace('BlackBright', 'Gray');
+			style = style.slice(2);
 			style = style.slice(0, 1).toLowerCase() + style.slice(1);
 			isBg = true;
 		}
@@ -51,31 +48,35 @@ const chalkPipe = (stylePipe?: string, customChalk?: Chalk) => {
 		// Hex
 		if (isHexColor(style)) {
 			paint = isBg ? paint.bgHex(style) : paint.hex(style);
-
 			continue;
 		}
 
-		// Normal Color or Keyword
-		if (isNormalColor(style)) {
-			if (isBg) {
-				style = (
-					'bg' +
-					style.slice(0, 1).toUpperCase() +
-					style.slice(1)
-				).replace('Gray', 'BlackBright');
-			}
-
-			paint = paint[style as typeof ForegroundColor];
-
-			continue;
-		} else if (isKeyword(style)) {
-			paint = isBg ? paint.bgKeyword(style) : paint.keyword(style);
-
+		// Keyword
+		if (isKeyword(style)) {
+			paint = isBg
+				? paint.bgHex(cssKeywords[style as Keyword])
+				: paint.hex(cssKeywords[style as Keyword]);
 			continue;
 		}
 	}
 
 	return paint;
 };
+
+export {
+	type Modifiers,
+	type ForegroundColor,
+	type BackgroundColor,
+	type Color,
+} from 'chalk';
+
+export {
+	type Keyword,
+	modifiers,
+	foregroundColors,
+	backgroundColors,
+	colors,
+	keywords,
+} from './styles.js';
 
 export default chalkPipe;

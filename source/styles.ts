@@ -1,15 +1,19 @@
-export const modifiers = [
+import type {Modifiers, ForegroundColor, BackgroundColor, Color} from 'chalk';
+
+export const modifiers: readonly Modifiers[] = [
 	'reset',
 	'bold',
 	'dim',
 	'italic',
 	'underline',
+	'overline',
 	'inverse',
 	'hidden',
 	'strikethrough',
+	'visible',
 ];
 
-export const normalColors = [
+export const foregroundColors: readonly ForegroundColor[] = [
 	'black',
 	'red',
 	'green',
@@ -18,7 +22,9 @@ export const normalColors = [
 	'magenta',
 	'cyan',
 	'white',
+	'blackBright',
 	'gray',
+	'grey',
 	'redBright',
 	'greenBright',
 	'yellowBright',
@@ -28,7 +34,33 @@ export const normalColors = [
 	'whiteBright',
 ];
 
-export const cssColorNames = {
+export const backgroundColors: readonly BackgroundColor[] = [
+	'bgBlack',
+	'bgRed',
+	'bgGreen',
+	'bgYellow',
+	'bgBlue',
+	'bgMagenta',
+	'bgCyan',
+	'bgWhite',
+	'bgBlackBright',
+	'bgGray',
+	'bgGrey',
+	'bgRedBright',
+	'bgGreenBright',
+	'bgYellowBright',
+	'bgBlueBright',
+	'bgMagentaBright',
+	'bgCyanBright',
+	'bgWhiteBright',
+];
+
+export const colors: readonly Color[] = [
+	...foregroundColors,
+	...backgroundColors,
+];
+
+export const cssKeywords = {
 	aliceblue: '#f0f8ff',
 	antiquewhite: '#faebd7',
 	aqua: '#00ffff',
@@ -178,3 +210,7 @@ export const cssColorNames = {
 	yellow: '#ffff00',
 	yellowgreen: '#9acd32',
 } as const;
+
+export type Keyword = keyof typeof cssKeywords;
+
+export const keywords = Object.keys(cssKeywords) as readonly Keyword[];
