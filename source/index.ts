@@ -3,6 +3,17 @@ import chalk from 'chalk';
 import type {Keyword} from './styles.js';
 import {modifiers, colors, cssKeywords} from './styles.js';
 
+export const normalizeHexColor = (text: string) => {
+	let color = text.replace('#', '');
+	if (color.length < 6) {
+		color = [...color.slice(0, 3)].map((x) => x.repeat(2)).join('');
+	} else if (color.length > 6) {
+		color = color.slice(0, 6);
+	}
+
+	return '#' + color;
+};
+
 export const isBuiltInStyle = (style: string) => {
 	return ([...modifiers, ...colors] as string[]).includes(style);
 };
@@ -12,7 +23,7 @@ export const isBackground = (style: string) => {
 };
 
 export const isHexColor = (style: string) => {
-	return /^#[\da-f]{3,6}$/i.test(style);
+	return /^#?[a-f\d]{3,8}$/i.test(style);
 };
 
 export const isKeyword = (style: string) => {
@@ -45,17 +56,18 @@ const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
 			isBg = true;
 		}
 
-		// Hex
-		if (isHexColor(style)) {
-			paint = isBg ? paint.bgHex(style) : paint.hex(style);
-			continue;
-		}
-
 		// Keyword
 		if (isKeyword(style)) {
 			paint = isBg
 				? paint.bgHex(cssKeywords[style as Keyword])
 				: paint.hex(cssKeywords[style as Keyword]);
+			continue;
+		}
+
+		// Hex
+		if (isHexColor(style)) {
+			style = normalizeHexColor(style);
+			paint = isBg ? paint.bgHex(style) : paint.hex(style);
 			continue;
 		}
 	}

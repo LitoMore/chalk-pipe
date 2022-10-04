@@ -1,12 +1,11 @@
 import test from 'ava';
-import {Chalk} from 'chalk';
 import {
 	modifiers,
 	foregroundColors,
 	cssKeywords,
 	backgroundColors,
 } from './styles.js';
-import chalkPipe from './index.js';
+import chalkPipe, {Chalk, normalizeHexColor} from './index.js';
 
 const chalk = new Chalk({level: 1});
 
@@ -82,10 +81,15 @@ test('Background styles', (t) => {
 });
 
 test('Hex color', (t) => {
-	const scheme = chalkPipe('#ff99cc', chalk);
-	const text = scheme('flora');
 	const expected = chalk.hex('#ff99cc')('flora');
-	t.is(text, expected);
+	t.is(chalkPipe('#ff99cc', chalk)('flora'), expected);
+	t.is(chalkPipe('ff99cc', chalk)('flora'), expected);
+	t.is(chalkPipe('f9c', chalk)('flora'), expected);
+	t.is(chalkPipe('#f9c', chalk)('flora'), expected);
+	t.is(chalkPipe('#F9C', chalk)('flora'), expected);
+	t.is(chalkPipe('#F9C', chalk)('flora'), expected);
+	t.is(chalkPipe('bg#f9c', chalk)('flora'), chalk.bgHex('#ff99cc')('flora'));
+	t.is(chalkPipe('bgf9c', chalk)('flora'), chalk.bgHex('#ff99cc')('flora'));
 });
 
 test('Empty style', (t) => {
@@ -103,8 +107,23 @@ test('Unknown style', (t) => {
 });
 
 test('Built-in Chalk', (t) => {
-	const scheme = chalkPipe();
+	const scheme = chalkPipe('cyan');
 	const text = scheme('normal text');
-	const expected = 'normal text';
+	const expected = chalk.cyan('normal text');
 	t.is(text, expected);
+});
+
+test('normalizeHexColor', (t) => {
+	t.is(normalizeHexColor('0cf'), '#00ccff');
+	t.is(normalizeHexColor('0cfe'), '#00ccff');
+	t.is(normalizeHexColor('0cfee'), '#00ccff');
+	t.is(normalizeHexColor('00ccff'), '#00ccff');
+	t.is(normalizeHexColor('00ccffe'), '#00ccff');
+	t.is(normalizeHexColor('00ccffee'), '#00ccff');
+	t.is(normalizeHexColor('#0cf'), '#00ccff');
+	t.is(normalizeHexColor('#0cfe'), '#00ccff');
+	t.is(normalizeHexColor('#0cfee'), '#00ccff');
+	t.is(normalizeHexColor('#00ccff'), '#00ccff');
+	t.is(normalizeHexColor('#00ccffe'), '#00ccff');
+	t.is(normalizeHexColor('#00ccffee'), '#00ccff');
 });
