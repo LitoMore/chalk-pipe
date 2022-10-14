@@ -94,7 +94,7 @@ chalkPipe('underline', chalk.blue)('Link!');
 
 ### keywordNames
 
-All supported keyword names are exposed as array of strings convenience.
+All supported keyword names are exposed as array of strings for convenience.
 
 ```js
 import {keywordNames} from 'chalk-pipe';
