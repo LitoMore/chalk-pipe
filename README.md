@@ -85,7 +85,7 @@ Example:
 Example:
 
 ```js
-import {Chalk} from 'chalk';
+import {Chalk} from 'chalk-pipe';
 
 const chalk = new Chalk({level: 1});
 
