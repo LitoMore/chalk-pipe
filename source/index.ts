@@ -1,38 +1,32 @@
-import type {ChalkInstance, Modifiers, Color} from 'chalk';
-import chalk from 'chalk';
-import type {Keyword} from './styles.js';
-import {modifiers, colors, cssKeywords} from './styles.js';
+import chalk, {
+	type ChalkInstance,
+	type ModifierName,
+	type ColorName,
+	modifierNames,
+	colorNames,
+} from 'chalk';
+import {type KeywordName, cssKeywords} from './styles.js';
+import {normalizeHexColor} from './utils.js';
 
-export const normalizeHexColor = (text: string) => {
-	let color = text.replace('#', '');
-	if (color.length < 6) {
-		color = [...color.slice(0, 3)].map((x) => x.repeat(2)).join('');
-	} else if (color.length > 6) {
-		color = color.slice(0, 6);
-	}
-
-	return '#' + color;
+const isBuiltInStyle = (style: string) => {
+	return ([...modifierNames, ...colorNames] as string[]).includes(style);
 };
 
-export const isBuiltInStyle = (style: string) => {
-	return ([...modifiers, ...colors] as string[]).includes(style);
-};
-
-export const isBackground = (style: string) => {
+const isBackground = (style: string) => {
 	return style.startsWith('bg');
 };
 
-export const isHexColor = (style: string) => {
+const isHexColor = (style: string) => {
 	return /^#?[a-f\d]{3,8}$/i.test(style);
 };
 
-export const isKeyword = (style: string) => {
+const isKeyword = (style: string) => {
 	return style in cssKeywords;
 };
 
 const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
-	// eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-	let paint = customChalk || chalk;
+	// eslint-disable-next-line n/no-unsupported-features/es-syntax
+	let paint = customChalk ?? chalk;
 
 	if (!stylePipe || stylePipe.length === 0) {
 		return paint;
@@ -45,7 +39,7 @@ const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
 
 		// Built-in styles
 		if (isBuiltInStyle(style)) {
-			paint = paint[style as Modifiers | Color];
+			paint = paint[style as ModifierName | ColorName];
 			continue;
 		}
 
@@ -59,8 +53,8 @@ const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
 		// Keyword
 		if (isKeyword(style)) {
 			paint = isBg
-				? paint.bgHex(cssKeywords[style as Keyword])
-				: paint.hex(cssKeywords[style as Keyword]);
+				? paint.bgHex(cssKeywords[style as KeywordName])
+				: paint.hex(cssKeywords[style as KeywordName]);
 			continue;
 		}
 
@@ -77,14 +71,5 @@ const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
 
 export {default as chalk} from 'chalk';
 export * from 'chalk';
-
-export {
-	type Keyword,
-	modifiers,
-	foregroundColors,
-	backgroundColors,
-	colors,
-	keywords,
-} from './styles.js';
-
+export {type KeywordName, keywordNames} from './styles.js';
 export default chalkPipe;

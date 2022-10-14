@@ -1,16 +1,17 @@
 import test from 'ava';
-import {
-	modifiers,
-	foregroundColors,
-	cssKeywords,
-	backgroundColors,
-} from './styles.js';
-import chalkPipe, {Chalk, normalizeHexColor} from './index.js';
+import {cssKeywords} from './styles.js';
+import {normalizeHexColor} from './utils.js';
+import chalkPipe, {
+	Chalk,
+	modifierNames,
+	foregroundColorNames,
+	backgroundColorNames,
+} from './index.js';
 
 const chalk = new Chalk({level: 1});
 
 test('Built-in modifiers', (t) => {
-	const stackedScheme = chalkPipe(modifiers.join('.'), chalk);
+	const stackedScheme = chalkPipe(modifierNames.join('.'), chalk);
 	const stackedText = stackedScheme('foo');
 	const stackedExpected =
 		chalk.reset.bold.dim.italic.underline.overline.inverse.hidden.strikethrough.visible(
@@ -18,17 +19,17 @@ test('Built-in modifiers', (t) => {
 		);
 	t.is(stackedText, stackedExpected);
 
-	const splicedText = modifiers
+	const splicedText = modifierNames
 		.map((style) => chalkPipe(style, chalk)(style))
 		.join('');
-	const splicedExpected = modifiers
+	const splicedExpected = modifierNames
 		.map((style) => chalk[style](style))
 		.join('');
 	t.is(splicedText, splicedExpected);
 });
 
 test('Built-in foreground colors', (t) => {
-	const stackedScheme = chalkPipe(foregroundColors.join('.'), chalk);
+	const stackedScheme = chalkPipe(foregroundColorNames.join('.'), chalk);
 	const stackedText = stackedScheme('bar');
 	const stackedExpected =
 		chalk.black.red.green.yellow.blue.magenta.cyan.white.blackBright.gray.grey.redBright.greenBright.yellowBright.blueBright.magentaBright.cyanBright.whiteBright(
@@ -36,17 +37,17 @@ test('Built-in foreground colors', (t) => {
 		);
 	t.is(stackedText, stackedExpected);
 
-	const splicedText = foregroundColors
+	const splicedText = foregroundColorNames
 		.map((style) => chalkPipe(style, chalk)(style))
 		.join('');
-	const splicedExpected = foregroundColors
+	const splicedExpected = foregroundColorNames
 		.map((style) => chalk[style](style))
 		.join('');
 	t.is(splicedText, splicedExpected);
 });
 
 test('Built-in background colors', (t) => {
-	const stackedScheme = chalkPipe(backgroundColors.join('.'), chalk);
+	const stackedScheme = chalkPipe(backgroundColorNames.join('.'), chalk);
 	const stackedText = stackedScheme('bg');
 	const stackedExpected =
 		chalk.bgBlack.bgRed.bgGreen.bgYellow.bgBlue.bgMagenta.bgCyan.bgWhite.bgBlackBright.bgGray.bgGrey.bgRedBright.bgGreenBright.bgYellowBright.bgBlueBright.bgMagentaBright.bgCyanBright.bgWhiteBright(
@@ -54,10 +55,10 @@ test('Built-in background colors', (t) => {
 		);
 	t.is(stackedText, stackedExpected);
 
-	const splicedText = backgroundColors
+	const splicedText = backgroundColorNames
 		.map((style) => chalkPipe(style, chalk)(style))
 		.join('');
-	const splicedExpected = backgroundColors
+	const splicedExpected = backgroundColorNames
 		.map((style) => chalk[style](style))
 		.join('');
 	t.is(splicedText, splicedExpected);

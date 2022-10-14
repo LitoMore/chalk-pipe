@@ -92,58 +92,15 @@ const chalk = new Chalk({level: 1});
 chalkPipe('underline', chalk.blue)('Link!');
 ```
 
-## Advanced usage
+### keywordNames
 
-The following are the functions and variables used by the logic of `chalk-pipe`. We exposed them all for convenience.
-
-### modifiers, foregroundColors, backgroundColors, colors, and keywords
-
-All supported style strings are exposed as an array of strings. `colors` is the combination of `foregroundColors` and `backgroundColors`.
-
-This can be useful if you wrap Chalk and need to validate input:
+All supported keyword names are exposed as array of strings convenience.
 
 ```js
-import {modifiers, foregroundColors, keywords} from 'chalk-pipe';
+import {keywordNames} from 'chalk-pipe';
 
-console.log(modifiers.includes('bold'));
+console.log(keywordNames.includes('pink'));
 //=> true
-
-console.log(foregroundColors.includes('pink'));
-//=> false
-
-console.log(keywords.includes('pink'));
-//=> true
-```
-
-### isBuiltInStyle, isBackground, isHexColor, and isKeyword
-
-These methods are used to determine whether a string is the specified style. `isBuiltInStyle` is used to determine whether it is a style supported by Chalk built-in.
-
-```js
-import {isBuiltInStyle, isBackground, isHexColor, isKeyword} from 'chalk-pipe';
-
-console.log(isBuiltInStyle('pink'));
-//=> false
-
-console.log(isBackground('bgPink'));
-//=> true
-
-console.log(isHexColor('#fff'));
-//=> true
-
-console.log(isHexColor('fff'));
-//=> true
-```
-
-### normalizeHexColor
-
-This method is used to convert non-6-digit hex color to 6-digit.
-
-```js
-import {normalizeHexColor} from 'chalk-pipe';
-
-console.log(normalizeHexColor('0cf'));
-//=> '#00ccff'
 ```
 
 ## Supported styles
