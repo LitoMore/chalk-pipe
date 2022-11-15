@@ -1,12 +1,12 @@
 {
   "name": "chalk-pipe",
-  "version": "5.1.2",
+  "version": "6.0.0",
   "description": "Create chalk style schemes with simpler style strings",
   "type": "module",
   "exports": "./distribution/index.js",
   "types": "distribution",
   "engines": {
-    "node": ">=12"
+    "node": "^12.17.0 || ^14.13 || >=16.0.0"
   },
   "files": [
     "distribution"
