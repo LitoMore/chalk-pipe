@@ -25,8 +25,10 @@ const isKeyword = (style: string) => {
 };
 
 const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
+	/* c8 ignore start */
 	// eslint-disable-next-line n/no-unsupported-features/es-syntax
 	let paint = customChalk ?? chalk;
+	/* c8 ignore stop */
 
 	if (!stylePipe || stylePipe.length === 0) {
 		return paint;
