@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "build": "del-cli distribution && tsc",
-    "test": "xo && c8 -r html ava"
+    "test": "xo && c8 ava"
   },
   "repository": {
     "type": "git",
