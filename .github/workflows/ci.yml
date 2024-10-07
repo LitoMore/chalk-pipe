@@ -12,5 +12,4 @@ jobs:
         node-version: 22
         check-latest: true
     - run: npm install
-    - run: npm run build
     - run: npm test

@@ -12,7 +12,9 @@
     "distribution"
   ],
   "scripts": {
+    "prepublishOnly": "npm run build",    
     "build": "del-cli distribution && tsc",
+    "pretest": "npm run build",
     "test": "xo && c8 ava"
   },
   "repository": {
