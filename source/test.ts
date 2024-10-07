@@ -1,5 +1,5 @@
 import test from 'ava';
-import {cssKeywords} from './styles.js';
+import {cssKeywordsMap} from './styles.js';
 import {normalizeHexColor} from './utils.js';
 import chalkPipe, {
 	Chalk,
@@ -67,7 +67,7 @@ test('Built-in background colors', (t) => {
 test('Keyword styles', (t) => {
 	const scheme = chalkPipe('hotpink', chalk);
 	const text = scheme('hug');
-	const expected = chalk.hex(cssKeywords.hotpink)('hug');
+	const expected = chalk.hex(cssKeywordsMap.get('hotpink')!)('hug');
 	t.is(text, expected);
 });
 
@@ -76,7 +76,7 @@ test('Background styles', (t) => {
 	const text = scheme('unicorn');
 	const expected = chalk.bgRed
 		.bgHex('#ff99cc')
-		.bgHex(cssKeywords.pink)
+		.bgHex(cssKeywordsMap.get('pink')!)
 		.bgBlackBright('unicorn');
 	t.is(text, expected);
 });

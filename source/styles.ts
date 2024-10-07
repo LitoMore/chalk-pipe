@@ -147,7 +147,9 @@ export const cssKeywords = {
 	whitesmoke: '#f5f5f5',
 	yellow: '#ffff00',
 	yellowgreen: '#9acd32',
-} as const;
+};
+
+export const cssKeywordsMap = new Map(Object.entries(cssKeywords));
 
 /**
 [CSS keyword](https://www.w3.org/wiki/CSS/Properties/color/keywords) names.

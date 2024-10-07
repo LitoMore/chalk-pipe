@@ -5,24 +5,10 @@ import chalk, {
 	modifierNames,
 	colorNames,
 } from 'chalk';
-import {type KeywordName, cssKeywords} from './styles.js';
+import {cssKeywordsMap} from './styles.js';
 import {normalizeHexColor} from './utils.js';
 
-const isBuiltInStyle = (style: string) => {
-	return ([...modifierNames, ...colorNames] as string[]).includes(style);
-};
-
-const isBackground = (style: string) => {
-	return style.startsWith('bg');
-};
-
-const isHexColor = (style: string) => {
-	return /^#?[a-f\d]{3,8}$/i.test(style);
-};
-
-const isKeyword = (style: string) => {
-	return style in cssKeywords;
-};
+const builtInStyles = new Set<string>([...modifierNames, ...colorNames]);
 
 const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
 	/* c8 ignore start */
@@ -40,28 +26,27 @@ const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
 		let isBg = false;
 
 		// Built-in styles
-		if (isBuiltInStyle(style)) {
+		if (builtInStyles.has(style)) {
 			paint = paint[style as ModifierName | ColorName];
 			continue;
 		}
 
 		// Background
-		if (isBackground(style)) {
+		if (style.startsWith('bg')) {
 			style = style.slice(2);
 			style = style.slice(0, 1).toLowerCase() + style.slice(1);
 			isBg = true;
 		}
 
 		// Keyword
-		if (isKeyword(style)) {
-			paint = isBg
-				? paint.bgHex(cssKeywords[style as KeywordName])
-				: paint.hex(cssKeywords[style as KeywordName]);
+		if (cssKeywordsMap.has(style)) {
+			const colorHex = cssKeywordsMap.get(style)!;
+			paint = isBg ? paint.bgHex(colorHex) : paint.hex(colorHex);
 			continue;
 		}
 
 		// Hex
-		if (isHexColor(style)) {
+		if (/^#?[a-f\d]{3,8}$/i.test(style)) {
 			style = normalizeHexColor(style);
 			paint = isBg ? paint.bgHex(style) : paint.hex(style);
 			continue;
