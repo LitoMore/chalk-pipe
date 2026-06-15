@@ -9,6 +9,9 @@ Create chalk style schemes with simpler style strings
 
 ![](https://raw.githubusercontent.com/LitoMore/chalk-pipe/main/screenshot.png)
 
+> [!NOTE]\
+> You may don't need this module if you only want to use color texts with simple styles since Node.js 22.13.0 has a new built-in API [`util.styleText`](https://nodejs.org/docs/latest/api/util.html#utilstyletextformat-text-options) that can do the similar thing as this module.
+
 ## Install
 
 ```sh
@@ -18,41 +21,41 @@ npm install chalk-pipe
 ## Usage
 
 ```js
-import chalkPipe from 'chalk-pipe';
+import chalkPipe from "chalk-pipe";
 
-console.log(chalkPipe('blue.bold')('Hello world!'));
+console.log(chalkPipe("blue.bold")("Hello world!"));
 ```
 
 Use dot `.` to separeate multiple styles:
 
 ```js
-const link = chalkPipe('blue.underline');
-const error = chalkPipe('bgRed.#cccccc');
-const warning = chalkPipe('orange.bold');
+const link = chalkPipe("blue.underline");
+const error = chalkPipe("bgRed.#cccccc");
+const warning = chalkPipe("orange.bold");
 
-console.log(link('Link!'));
-console.log(error('Error!'));
-console.log(warning('Warning!'));
+console.log(link("Link!"));
+console.log(error("Error!"));
+console.log(warning("Warning!"));
 ```
 
 `chalkPipe` is also `chalk`:
 
 ```js
-const blue = chalkPipe('blue');
+const blue = chalkPipe("blue");
 const link = blue.underline;
 
-console.log(link('Link!'));
+console.log(link("Link!"));
 ```
 
 ### Use custom chalk
 
 ```js
-import chalkPipe, {chalk, Chalk} from 'chalk-pipe';
+import chalkPipe, { chalk, Chalk } from "chalk-pipe";
 
-const customChalk = new Chalk({level: 1});
+const customChalk = new Chalk({ level: 1 });
 
-console.log(chalkPipe('underline', chalk.blue)('Link!'));
-console.log(chalkPipe('underline', customChalk.blue)('Link!'));
+console.log(chalkPipe("underline", chalk.blue)("Link!"));
+console.log(chalkPipe("underline", customChalk.blue)("Link!"));
 ```
 
 ## Built-in Chalk
@@ -62,12 +65,12 @@ All Chalk exported functions, variables, and declarations are exposed for conven
 This can be useful if you want to use `chalk` directly.
 
 ```js
-import {chalk, Chalk} from 'chalk-pipe';
+import { chalk, Chalk } from "chalk-pipe";
 
-const customChalk = new Chalk({level: 0});
+const customChalk = new Chalk({ level: 0 });
 
-console.log(chalk.blue('Hello'))
-console.log(customChalk.green('World'));
+console.log(chalk.blue("Hello"));
+console.log(customChalk.green("World"));
 ```
 
 ## API
@@ -76,20 +79,20 @@ console.log(customChalk.green('World'));
 
 Example:
 
- ```js
- chalkPipe('blue.underline')('Link!');
- ```
+```js
+chalkPipe("blue.underline")("Link!");
+```
 
 ### chalkPipe(styles, chalk)(text)
 
 Example:
 
 ```js
-import {Chalk} from 'chalk-pipe';
+import { Chalk } from "chalk-pipe";
 
-const chalk = new Chalk({level: 1});
+const chalk = new Chalk({ level: 1 });
 
-chalkPipe('underline', chalk.blue)('Link!');
+chalkPipe("underline", chalk.blue)("Link!");
 ```
 
 ### keywordNames
@@ -97,9 +100,9 @@ chalkPipe('underline', chalk.blue)('Link!');
 All supported keyword names are exposed as array of strings for convenience.
 
 ```js
-import {keywordNames} from 'chalk-pipe';
+import { keywordNames } from "chalk-pipe";
 
-console.log(keywordNames.includes('pink'));
+console.log(keywordNames.includes("pink"));
 //=> true
 ```
 
