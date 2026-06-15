@@ -159,4 +159,5 @@ export type KeywordName = keyof typeof cssKeywords;
 /**
 [CSS keyword](https://www.w3.org/wiki/CSS/Properties/color/keywords) names.
 */
+// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 export const keywordNames = Object.keys(cssKeywords) as readonly KeywordName[];

@@ -10,9 +10,13 @@ import {normalizeHexColor} from './utils.js';
 
 const builtInStyles = new Set<string>([...modifierNames, ...colorNames]);
 
+function isBuiltInStyle(style: string): style is ModifierName | ColorName {
+	return builtInStyles.has(style);
+}
+
 const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
 	/* c8 ignore start */
-	// eslint-disable-next-line n/no-unsupported-features/es-syntax
+
 	let paint = customChalk ?? chalk;
 	/* c8 ignore stop */
 
@@ -26,8 +30,8 @@ const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
 		let isBg = false;
 
 		// Built-in styles
-		if (builtInStyles.has(style)) {
-			paint = paint[style as ModifierName | ColorName];
+		if (isBuiltInStyle(style)) {
+			paint = paint[style];
 			continue;
 		}
 
@@ -46,7 +50,7 @@ const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
 		}
 
 		// Hex
-		if (/^#?[a-f\d]{3,8}$/i.test(style)) {
+		if (/^#?[a-f\d]{3,8}$/iv.test(style)) {
 			style = normalizeHexColor(style);
 			paint = isBg ? paint.bgHex(style) : paint.hex(style);
 			continue;
