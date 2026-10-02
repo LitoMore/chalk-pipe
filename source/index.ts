@@ -20,6 +20,7 @@ const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
 	let paint = customChalk ?? chalk;
 	/* c8 ignore stop */
 
+	// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 	if (!stylePipe || stylePipe.length === 0) {
 		return paint;
 	}
@@ -27,13 +28,13 @@ const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
 	const styles = stylePipe.split('.');
 
 	for (let style of styles) {
-		let isBg = false;
-
 		// Built-in styles
 		if (isBuiltInStyle(style)) {
 			paint = paint[style];
 			continue;
 		}
+
+		let isBg = false;
 
 		// Background
 		if (style.startsWith('bg')) {
@@ -50,11 +51,12 @@ const chalkPipe = (stylePipe?: string, customChalk?: ChalkInstance) => {
 		}
 
 		// Hex
-		if (/^#?[a-f\d]{3,8}$/iv.test(style)) {
-			style = normalizeHexColor(style);
-			paint = isBg ? paint.bgHex(style) : paint.hex(style);
+		if (!/^#?[\da-f]{3,8}$/iv.test(style)) {
 			continue;
 		}
+
+		style = normalizeHexColor(style);
+		paint = isBg ? paint.bgHex(style) : paint.hex(style);
 	}
 
 	return paint;

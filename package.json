@@ -1,53 +1,58 @@
 {
-  "name": "chalk-pipe",
-  "version": "6.2.0",
-  "description": "Create chalk style schemes with simpler style strings",
-  "type": "module",
-  "exports": "./distribution/index.js",
-  "types": "distribution",
-  "engines": {
-    "node": "^12.17.0 || ^14.13 || >=16.0.0"
-  },
-  "files": [
-    "distribution"
-  ],
-  "scripts": {
-    "prepublishOnly": "npm run build",
-    "build": "del-cli distribution && tsc",
-    "pretest": "npm run build",
-    "test": "xo && ava"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LitoMore/chalk-pipe.git"
-  },
-  "author": "LitoMore",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/LitoMore/chalk-pipe/issues"
-  },
-  "homepage": "https://github.com/LitoMore/chalk-pipe#readme",
-  "devDependencies": {
-    "@sindresorhus/tsconfig": "^8.1.0",
-    "@types/node": "^25.9.3",
-    "ava": "^8.0.1",
-    "c8": "^11.0.0",
-    "del-cli": "^7.0.0",
-    "typescript": "^6.0.3",
-    "xo": "^2.0.2"
-  },
-  "dependencies": {
-    "chalk": "^5.6.2"
-  },
-  "xo": {
-    "prettier": true,
-    "rules": {
-      "ava/no-ignored-test-files": "off"
-    }
-  },
-  "ava": {
-    "files": [
-      "distribution/source/test.js"
-    ]
-  }
+	"name": "chalk-pipe",
+	"version": "6.2.0",
+	"description": "Create chalk style schemes with simpler style strings",
+	"license": "MIT",
+	"repository": "github:LitoMore/chalk-pipe",
+	"homepage": "https://github.com/LitoMore/chalk-pipe#readme",
+	"bugs": "https://github.com/LitoMore/chalk-pipe/issues",
+	"author": "LitoMore",
+	"type": "module",
+	"exports": {
+		"types": "./distribution/index.d.ts",
+		"default": "./distribution/index.js"
+	},
+	"sideEffects": false,
+	"engines": {
+		"node": "^12.17.0 || ^14.13 || >=16.0.0"
+	},
+	"scripts": {
+		"prepublishOnly": "npm run build",
+		"build": "del-cli distribution && tsc",
+		"pretest": "npm run build",
+		"test": "xo && ava"
+	},
+	"files": [
+		"distribution"
+	],
+	"keywords": [
+		"chalk",
+		"style",
+		"color",
+		"terminal",
+		"cli"
+	],
+	"dependencies": {
+		"chalk": "^5.6.2"
+	},
+	"devDependencies": {
+		"@sindresorhus/tsconfig": "^8.1.0",
+		"@types/node": "^25.9.3",
+		"ava": "^8.0.1",
+		"c8": "^11.0.0",
+		"del-cli": "^7.0.0",
+		"typescript": "^6.0.3",
+		"xo": "^5.0.1"
+	},
+	"xo": {
+		"prettier": true,
+		"rules": {
+			"ava/no-ignored-test-files": "off"
+		}
+	},
+	"ava": {
+		"files": [
+			"distribution/source/test.js"
+		]
+	}
 }
